@@ -3,7 +3,8 @@
     "allow": [
       "Bash(git init *)",
       "Bash(git add *)",
-      "Bash(git -c user.name=GrowVibe -c user.email=zhanabai42@outlook.com commit -q -m 'Initial commit: SES 50MW Tolebi investment dashboard *)"
+      "Bash(git -c user.name=GrowVibe -c user.email=zhanabai42@outlook.com commit -q -m 'Initial commit: SES 50MW Tolebi investment dashboard *)",
+      "Bash(git -c user.name=GrowVibe -c user.email=zhanabai42@outlook.com commit -q -m 'Split single-page tabs into separate pages per section *)"
     ]
   }
 }

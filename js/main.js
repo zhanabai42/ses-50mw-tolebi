@@ -1,17 +1,3 @@
-// Tabs
-const tabBtns = document.querySelectorAll('.tab-btn');
-const panels = document.querySelectorAll('.tab-panel');
-
-tabBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    tabBtns.forEach(b => b.classList.remove('active'));
-    panels.forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-});
-
 // Chart.js global defaults
 if (window.Chart) {
   Chart.defaults.color = '#8d9bb0';

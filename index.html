@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>СЭС 50 МВт «Толеби» — Инвестиционный проект</title>
+<title>Обзор — СЭС 50 МВт «Толеби»</title>
 <meta name="description" content="Инвестиционный дашборд проекта строительства солнечной электростанции 50 МВт в Толеби районе, Туркестанская область, Казахстан">
 <link rel="stylesheet" href="css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -25,424 +24,95 @@
   </div>
 </header>
 
-<nav class="tabs" id="tabs">
+<nav class="tabs">
   <div class="container tabs__inner">
-    <button class="tab-btn active" data-tab="overview">Обзор</button>
-    <button class="tab-btn" data-tab="finance">Финансы</button>
-    <button class="tab-btn" data-tab="production">Производство</button>
-    <button class="tab-btn" data-tab="funding">Финансирование</button>
-    <button class="tab-btn" data-tab="roadmap">Дорожная карта</button>
-    <button class="tab-btn" data-tab="risks">Риски</button>
-    <button class="tab-btn" data-tab="stakeholders">Стороны</button>
+    <a class="tab-btn active" href="index.html">Обзор</a>
+    <a class="tab-btn" href="finance.html">Финансы</a>
+    <a class="tab-btn" href="production.html">Производство</a>
+    <a class="tab-btn" href="funding.html">Финансирование</a>
+    <a class="tab-btn" href="roadmap.html">Дорожная карта</a>
+    <a class="tab-btn" href="risks.html">Риски</a>
   </div>
 </nav>
 
 <main class="container">
 
-  <!-- OVERVIEW -->
-  <section class="tab-panel active" id="overview">
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">Мощность</div><div class="kpi-value">50 <span>МВт</span></div></div>
-      <div class="kpi-card"><div class="kpi-label">CAPEX</div><div class="kpi-value">$23,5 <span>млн</span></div></div>
-      <div class="kpi-card"><div class="kpi-label">Тариф PPA</div><div class="kpi-value">34 <span>₸/кВт·ч</span></div></div>
-      <div class="kpi-card"><div class="kpi-label">КИУМ</div><div class="kpi-value">21 <span>%</span></div></div>
-      <div class="kpi-card highlight"><div class="kpi-label">Простой PP</div><div class="kpi-value">8,5 <span>лет</span></div></div>
-      <div class="kpi-card highlight"><div class="kpi-label">IRR проекта</div><div class="kpi-value">&gt;22 <span>%</span></div></div>
-      <div class="kpi-card highlight"><div class="kpi-label">NPV (12%, 25 лет)</div><div class="kpi-value">&gt;12 <span>млрд ₸</span></div></div>
-      <div class="kpi-card"><div class="kpi-label">Срок службы</div><div class="kpi-value">25 <span>лет</span></div></div>
-    </div>
+  <div class="kpi-grid">
+    <div class="kpi-card"><div class="kpi-label">Мощность</div><div class="kpi-value">50 <span>МВт</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">CAPEX</div><div class="kpi-value">$23,5 <span>млн</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">Тариф PPA</div><div class="kpi-value">34 <span>₸/кВт·ч</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">КИУМ</div><div class="kpi-value">21 <span>%</span></div></div>
+    <div class="kpi-card highlight"><div class="kpi-label">Простой PP</div><div class="kpi-value">8,5 <span>лет</span></div></div>
+    <div class="kpi-card highlight"><div class="kpi-label">IRR проекта</div><div class="kpi-value">&gt;22 <span>%</span></div></div>
+    <div class="kpi-card highlight"><div class="kpi-label">NPV (12%, 25 лет)</div><div class="kpi-value">&gt;12 <span>млрд ₸</span></div></div>
+    <div class="kpi-card"><div class="kpi-label">Срок службы</div><div class="kpi-value">25 <span>лет</span></div></div>
+  </div>
 
-    <div class="grid-2">
-      <div class="card">
-        <h3>Описание проекта</h3>
-        <p>Строительство и эксплуатация солнечной фотоэлектрической электростанции установленной мощностью <b>50 МВт</b> в Толеби районе Туркестанской области Республики Казахстан.</p>
-        <p>Проект реализуется в рамках государственной политики перехода к зелёной экономике. Электроэнергия реализуется по долгосрочному договору <b>PPA</b> с фиксированным тарифом 34 ₸/кВт·ч, индексируемым на 5% в год.</p>
-        <p>Толеби район обладает одним из самых высоких показателей солнечной инсоляции в Казахстане (&gt;2700 ч/год), что обеспечивает КИУМ 21% — выше среднего по стране уровня 15–17%.</p>
-      </div>
-      <div class="card">
-        <h3>Цели проекта</h3>
-        <h4>Первичные</h4>
-        <ul class="check-list">
-          <li>Построить и ввести в эксплуатацию СЭС 50 МВт</li>
-          <li>Достичь PP ≤ 10 лет (цель — 8,5 лет)</li>
-          <li>IRR &gt; 12% (целевой &gt;22%)</li>
-          <li>Финансирование 80% кредит / 20% лизинг</li>
-        </ul>
-        <h4>Вторичные</h4>
-        <ul class="check-list">
-          <li>Сократить выброс CO₂ на ≈75 000 т/год</li>
-          <li>Локализация строительства согласно требованиям БРК</li>
-          <li>База для масштабирования портфеля ВИЭ-активов</li>
-        </ul>
-      </div>
-    </div>
-
+  <div class="grid-2">
     <div class="card">
-      <h3>Объём работ</h3>
-      <div class="grid-2">
-        <div>
-          <h4 class="ok">В рамках проекта</h4>
-          <ul class="check-list">
-            <li>FEED + детальный проект СЭС 50 МВт</li>
-            <li>EPC-контракт с китайским генподрядчиком (под ключ)</li>
-            <li>Строительство, монтаж, пуско-наладка</li>
-            <li>Электросетевое присоединение</li>
-            <li>PPA с KOREM / промышленным потребителем</li>
-            <li>Проектное финансирование (ЕБРР + АБР + БРК-Лизинг)</li>
-            <li>Эксплуатация 25 лет (O&amp;M)</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="bad">Вне рамок проекта</h4>
-          <ul class="cross-list">
-            <li>Линии передачи за пределами точки подключения</li>
-            <li>Системы накопления энергии (BESS) — следующая фаза</li>
-            <li>Производство солнечных модулей</li>
-          </ul>
-        </div>
-      </div>
+      <h3>Описание проекта</h3>
+      <p>Строительство и эксплуатация солнечной фотоэлектрической электростанции установленной мощностью <b>50 МВт</b> в Толеби районе Туркестанской области Республики Казахстан.</p>
+      <p>Проект реализуется в рамках государственной политики перехода к зелёной экономике. Электроэнергия реализуется по долгосрочному договору <b>PPA</b> с фиксированным тарифом 34 ₸/кВт·ч, индексируемым на 5% в год.</p>
+      <p>Толеби район обладает одним из самых высоких показателей солнечной инсоляции в Казахстане (&gt;2700 ч/год), что обеспечивает КИУМ 21% — выше среднего по стране уровня 15–17%.</p>
     </div>
-  </section>
-
-  <!-- FINANCE -->
-  <section class="tab-panel" id="finance">
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-label">PP (недисконт.)</div><div class="kpi-value">8,5 <span>лет</span></div></div>
-      <div class="kpi-card"><div class="kpi-label">PP дисконт. (12%)</div><div class="kpi-value">16,5 <span>лет</span></div></div>
-      <div class="kpi-card highlight"><div class="kpi-label">IRR</div><div class="kpi-value">&gt;22 <span>%</span></div></div>
-      <div class="kpi-card highlight"><div class="kpi-label">NPV</div><div class="kpi-value">&gt;12 <span>млрд ₸</span></div></div>
-      <div class="kpi-card"><div class="kpi-label">PI</div><div class="kpi-value">&gt;2,0</div></div>
-      <div class="kpi-card"><div class="kpi-label">Мин. DSCR</div><div class="kpi-value">1,5 <span>x</span></div></div>
-    </div>
-
     <div class="card">
-      <h3>Операционные показатели (Год 1 / 5 / 10)</h3>
-      <div class="chart-wrap"><canvas id="chartOpex"></canvas></div>
-      <table class="data-table">
-        <thead><tr><th>Статья</th><th>Год 1</th><th>Год 5</th><th>Год 10</th></tr></thead>
-        <tbody>
-          <tr><td>Выручка (млрд ₸)</td><td>3,13</td><td>3,86</td><td>5,15</td></tr>
-          <tr><td>OPEX (млрд ₸)</td><td>0,235</td><td>0,264</td><td>0,307</td></tr>
-          <tr><td>EBITDA (млрд ₸)</td><td>2,89</td><td>3,59</td><td>4,87</td></tr>
-          <tr><td>Маржа EBITDA</td><td>92%</td><td>93%</td><td>95%</td></tr>
-          <tr><td>Чистая прибыль (млрд ₸)</td><td>0,58</td><td>1,12</td><td>2,08</td></tr>
-          <tr><td>DSCR</td><td>1,5x</td><td>1,8x</td><td>2,4x</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Анализ чувствительности (сценарии)</h3>
-      <table class="data-table">
-        <thead><tr><th>Сценарий</th><th>КИУМ</th><th>Тариф</th><th>NPV (млрд ₸)</th><th>IRR</th><th>PP</th></tr></thead>
-        <tbody>
-          <tr class="row-bad"><td>Пессимистичный</td><td>13%</td><td>25 ₸</td><td>&lt; 0</td><td>&lt; 12%</td><td>&gt; 25 лет</td></tr>
-          <tr class="row-ok"><td>Базовый</td><td>21%</td><td>34 ₸</td><td>&gt; 12</td><td>&gt; 22%</td><td>8,5 лет</td></tr>
-          <tr class="row-good"><td>Оптимистичный</td><td>22%+</td><td>34 ₸</td><td>&gt; 15</td><td>&gt; 25%</td><td>&lt; 8 лет</td></tr>
-        </tbody>
-      </table>
-      <p class="muted">Ключевые факторы риска NPV: ставка дисконтирования, темп роста выручки, себестоимость EPC, курс USD/KZT.</p>
-    </div>
-
-    <div class="card">
-      <h3>Бюджет CAPEX (₸11,60 млрд)</h3>
-      <div class="chart-wrap small"><canvas id="chartCapex"></canvas></div>
-      <table class="data-table">
-        <thead><tr><th>Статья</th><th>Доля</th><th>Сумма (млрд ₸)</th></tr></thead>
-        <tbody>
-          <tr><td>Панели и инверторы (лизинг)</td><td>20%</td><td>2,32</td></tr>
-          <tr><td>Строительно-монтажные работы (EPC)</td><td>40%</td><td>4,64</td></tr>
-          <tr><td>Электросетевое подключение, ПС</td><td>20%</td><td>2,32</td></tr>
-          <tr><td>Проектирование, разрешения, резерв</td><td>20%</td><td>2,32</td></tr>
-          <tr class="row-total"><td>Итого</td><td>100%</td><td>11,60</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>OPEX (год 1) — 235 млн ₸</h3>
-      <table class="data-table">
-        <thead><tr><th>Статья</th><th>Сумма (млн ₸/год)</th></tr></thead>
-        <tbody>
-          <tr><td>Обслуживание и ремонт (O&amp;M)</td><td>200</td></tr>
-          <tr><td>Страхование</td><td>20</td></tr>
-          <tr><td>Административные расходы</td><td>10</td></tr>
-          <tr><td>Прочее</td><td>5</td></tr>
-          <tr class="row-total"><td>Итого</td><td>235</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- PRODUCTION -->
-  <section class="tab-panel" id="production">
-    <div class="grid-2">
-      <div class="card">
-        <h3>Параметры площадки</h3>
-        <table class="data-table">
-          <tbody>
-            <tr><td>Регион</td><td>Туркестанская обл., Толеби район</td></tr>
-            <tr><td>Площадь участка</td><td>≈130 га</td></tr>
-            <tr><td>Гориз. инсоляция</td><td>&gt;1850 кВт·ч/м²/год</td></tr>
-            <tr><td>Расчётный КИУМ</td><td>21%</td></tr>
-            <tr><td>Годовых часов выработки</td><td>≈1842 ч/год</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <h3>Техническая конфигурация</h3>
-        <table class="data-table">
-          <tbody>
-            <tr><td>Тип установки</td><td>Наземные монокристаллические панели</td></tr>
-            <tr><td>Установленная мощность</td><td>50 МВт (AC)</td></tr>
-            <tr><td>Деградация панелей</td><td>0,5%/год</td></tr>
-            <tr><td>Монтаж</td><td>Фикс. конструкции / одноосные трекеры</td></tr>
-            <tr><td>Инверторы</td><td>Центральные или строковые</td></tr>
-            <tr><td>SCADA</td><td>Входит в EPC-контракт</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Производственная программа (выработка и выручка)</h3>
-      <div class="chart-wrap"><canvas id="chartProduction"></canvas></div>
-      <table class="data-table">
-        <thead><tr><th>Год</th><th>Деградация</th><th>Выработка (МВт·ч)</th><th>Выручка (млрд ₸)</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>—</td><td>92 000</td><td>3,13</td></tr>
-          <tr><td>5</td><td>−2,0%</td><td>90 172</td><td>3,86</td></tr>
-          <tr><td>10</td><td>−4,5%</td><td>87 834</td><td>5,15</td></tr>
-          <tr><td>15</td><td>−7,0%</td><td>85 568</td><td>6,86</td></tr>
-          <tr><td>20</td><td>−9,5%</td><td>83 370</td><td>9,12</td></tr>
-          <tr><td>25</td><td>−12,0%</td><td>81 000</td><td>10,40</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- FUNDING -->
-  <section class="tab-panel" id="funding">
-    <div class="card">
-      <h3>Структура капитала</h3>
-      <div class="chart-wrap small"><canvas id="chartFunding"></canvas></div>
-      <table class="data-table">
-        <thead><tr><th>Источник</th><th>Доля</th><th>Сумма (млрд ₸)</th><th>Ставка</th><th>Срок</th></tr></thead>
-        <tbody>
-          <tr><td>Лизинг оборудования</td><td>20%</td><td>2,32</td><td>12,5%</td><td>7 лет</td></tr>
-          <tr><td>Кредит МФИ (ЕБРР + АБР)</td><td>80%</td><td>9,28</td><td>8,5% (средн.)</td><td>15 лет</td></tr>
-          <tr class="row-total"><td>Итого CAPEX</td><td>100%</td><td>11,60</td><td>—</td><td>—</td></tr>
-        </tbody>
-      </table>
-      <p class="muted">Курс USD/KZT: 492 ₸. CAPEX: $470 тыс./МВт × 50 МВт = $23,5 млн = ₸11,6 млрд.</p>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h3>Синдицированный кредит (80%)</h3>
-        <table class="data-table">
-          <thead><tr><th>Институт</th><th>Роль</th><th>Доля</th><th>Ставка</th><th>Срок</th></tr></thead>
-          <tbody>
-            <tr><td>ЕБРР</td><td>Ведущий кредитор</td><td>40%</td><td>7–8,5%</td><td>15 лет</td></tr>
-            <tr><td>АБР</td><td>Со-кредитор</td><td>40%</td><td>7–8%</td><td>15 лет</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="card">
-        <h3>Лизинг оборудования (20%)</h3>
-        <table class="data-table">
-          <thead><tr><th>Институт</th><th>Предмет</th><th>Ставка</th><th>Срок</th></tr></thead>
-          <tbody>
-            <tr><td>БРК-Лизинг</td><td>Панели, инверторы, трекеры</td><td>12,5%</td><td>7 лет</td></tr>
-          </tbody>
-        </table>
-        <h4>Альтернативные кредиторы</h4>
-        <ul class="check-list">
-          <li>ЕАБР (замена АБР при необходимости)</li>
-          <li>БРК (локальный тенге-транш, 12,6%)</li>
-          <li>Halyk Leasing (резерв, 14–16%)</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Требования МФИ</h3>
+      <h3>Цели проекта</h3>
+      <h4>Первичные</h4>
       <ul class="check-list">
-        <li>DSCR ≥ 1,3x на весь срок кредита</li>
-        <li>Подписанный PPA до финансового закрытия</li>
-        <li>ESAP по стандартам ЕБРР/АБР</li>
-        <li>Независимый технический советник (ITA)</li>
-        <li>Страхование: имущество, ответственность, задержка ввода (DSU)</li>
+        <li>Построить и ввести в эксплуатацию СЭС 50 МВт</li>
+        <li>Достичь PP ≤ 10 лет (цель — 8,5 лет)</li>
+        <li>IRR &gt; 12% (целевой &gt;22%)</li>
+        <li>Финансирование 80% кредит / 20% лизинг</li>
+      </ul>
+      <h4>Вторичные</h4>
+      <ul class="check-list">
+        <li>Сократить выброс CO₂ на ≈75 000 т/год</li>
+        <li>Локализация строительства согласно требованиям БРК</li>
+        <li>База для масштабирования портфеля ВИЭ-активов</li>
       </ul>
     </div>
-  </section>
+  </div>
 
-  <!-- ROADMAP -->
-  <section class="tab-panel" id="roadmap">
-    <div class="timeline">
-      <div class="timeline__item">
-        <div class="timeline__dot"></div>
-        <div class="timeline__content">
-          <span class="phase-tag">Фаза 0</span>
-          <h3>Pre-development <span class="muted">(0–6 мес.)</span></h3>
-          <ul class="check-list">
-            <li>Получение земельного участка</li>
-            <li>ТЭО</li>
-            <li>Подписание PPA с покупателем</li>
-            <li>Переговоры с ЕБРР и АБР (мандатные письма)</li>
-            <li>Предварительный договор с EPC-подрядчиком</li>
-          </ul>
-        </div>
+  <div class="card">
+    <h3>Объём работ</h3>
+    <div class="grid-2">
+      <div>
+        <h4 class="ok">В рамках проекта</h4>
+        <ul class="check-list">
+          <li>FEED + детальный проект СЭС 50 МВт</li>
+          <li>EPC-контракт с китайским генподрядчиком (под ключ)</li>
+          <li>Строительство, монтаж, пуско-наладка</li>
+          <li>Электросетевое присоединение</li>
+          <li>PPA с KOREM / промышленным потребителем</li>
+          <li>Проектное финансирование (ЕБРР + АБР + БРК-Лизинг)</li>
+          <li>Эксплуатация 25 лет (O&amp;M)</li>
+        </ul>
       </div>
-      <div class="timeline__item">
-        <div class="timeline__dot"></div>
-        <div class="timeline__content">
-          <span class="phase-tag">Фаза 1</span>
-          <h3>Разрешения и проектирование <span class="muted">(6–12 мес.)</span></h3>
-          <ul class="check-list">
-            <li>Разрешение на строительство</li>
-            <li>Согласование точки подключения</li>
-            <li>FEED</li>
-            <li>Экологическая экспертиза и ESAP</li>
-            <li>Финансовое закрытие (Financial Close)</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline__item">
-        <div class="timeline__dot"></div>
-        <div class="timeline__content">
-          <span class="phase-tag">Фаза 2</span>
-          <h3>Строительство <span class="muted">(12–24 мес.)</span></h3>
-          <ul class="check-list">
-            <li>Подписание EPC-контракта (Китай)</li>
-            <li>Поставка панелей и инверторов</li>
-            <li>СМР</li>
-            <li>Строительство ПС и подключение к сети</li>
-            <li>Пуско-наладочные испытания</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline__item">
-        <div class="timeline__dot"></div>
-        <div class="timeline__content">
-          <span class="phase-tag">Фаза 3</span>
-          <h3>Ввод в эксплуатацию <span class="muted">(мес. 24–26)</span></h3>
-          <ul class="check-list">
-            <li>Коммерческий пуск (COD)</li>
-            <li>Выход на проектную мощность</li>
-            <li>Начало поставок по PPA</li>
-          </ul>
-        </div>
-      </div>
-      <div class="timeline__item">
-        <div class="timeline__dot"></div>
-        <div class="timeline__content">
-          <span class="phase-tag">Фаза 4</span>
-          <h3>Эксплуатация <span class="muted">(годы 3–25)</span></h3>
-          <ul class="check-list">
-            <li>Плановое O&amp;M</li>
-            <li>Ежегодный мониторинг и отчётность МФИ</li>
-            <li>Погашение лизинга (1–7) и кредита (1–15)</li>
-            <li>Замена инверторов (≈год 12–15)</li>
-          </ul>
-        </div>
+      <div>
+        <h4 class="bad">Вне рамок проекта</h4>
+        <ul class="cross-list">
+          <li>Линии передачи за пределами точки подключения</li>
+          <li>Системы накопления энергии (BESS) — следующая фаза</li>
+          <li>Производство солнечных модулей</li>
+        </ul>
       </div>
     </div>
+  </div>
 
-    <div class="card">
-      <h3>Следующие шаги</h3>
-      <ol class="numbered-list">
-        <li><b>Немедленно</b> — подписать NDA и начать переговоры с ЕБРР и АБР по мандату</li>
-        <li><b>Мес. 1–2</b> — заключить предварительное соглашение по PPA с покупателем</li>
-        <li><b>Мес. 1–3</b> — провести тендер среди EPC-подрядчиков; зафиксировать цену в USD</li>
-        <li><b>Мес. 2–4</b> — оформить права на земельный участок в Толеби районе</li>
-        <li><b>Мес. 3–6</b> — завершить ТЭО и экологическую экспертизу</li>
-        <li><b>Мес. 6</b> — Финансовое закрытие (Financial Close)</li>
-        <li><b>Мес. 7</b> — Начало строительства</li>
-      </ol>
+  <div class="card">
+    <h3>Заинтересованные стороны</h3>
+    <div class="stakeholder-grid">
+      <div class="stakeholder-card"><h4>SPV (Проектная компания)</h4><p class="muted">Застройщик и владелец</p><p>Доходность, окупаемость</p></div>
+      <div class="stakeholder-card"><h4>ЕБРР</h4><p class="muted">Ведущий кредитор</p><p>Возвратность кредита, ESG</p></div>
+      <div class="stakeholder-card"><h4>АБР</h4><p class="muted">Со-кредитор</p><p>Возвратность, устойчивое развитие</p></div>
+      <div class="stakeholder-card"><h4>БРК-Лизинг</h4><p class="muted">Лизингодатель</p><p>Погашение лизинга</p></div>
+      <div class="stakeholder-card"><h4>Минэнерго РК</h4><p class="muted">Регулятор</p><p>Выполнение целей ВИЭ</p></div>
+      <div class="stakeholder-card"><h4>KOREM / Покупатель</h4><p class="muted">Офтейкер (PPA)</p><p>Надёжность поставок</p></div>
+      <div class="stakeholder-card"><h4>EPC-подрядчик (Китай)</h4><p class="muted">Строитель</p><p>Выполнение контракта</p></div>
+      <div class="stakeholder-card"><h4>O&amp;M-подрядчик</h4><p class="muted">Эксплуатация</p><p>Долгосрочный контракт</p></div>
+      <div class="stakeholder-card"><h4>Местные власти</h4><p class="muted">Разрешительный орган</p><p>Социальные выгоды, налоги</p></div>
     </div>
-  </section>
-
-  <!-- RISKS -->
-  <section class="tab-panel" id="risks">
-    <div class="card">
-      <h3>Риски и меры снижения</h3>
-      <table class="data-table risk-table">
-        <thead><tr><th>Риск</th><th>Вероятность</th><th>Влияние</th><th>Мера снижения</th></tr></thead>
-        <tbody>
-          <tr><td>Колебание курса USD/KZT</td><td><span class="badge badge-mid">Средняя</span></td><td><span class="badge badge-high">Высокое</span></td><td>Хеджирование / USD-кредит</td></tr>
-          <tr><td>Снижение реального КИУМ</td><td><span class="badge badge-low">Низкая</span></td><td><span class="badge badge-high">Высокое</span></td><td>Годовой мониторинг; трекеры</td></tr>
-          <tr><td>Задержка ввода в эксплуатацию</td><td><span class="badge badge-mid">Средняя</span></td><td><span class="badge badge-mid">Среднее</span></td><td>Страхование DSU; штрафы в EPC</td></tr>
-          <tr><td>Пересмотр тарифа PPA</td><td><span class="badge badge-low">Низкая</span></td><td><span class="badge badge-crit">Критическое</span></td><td>Фиксация тарифа на 25 лет</td></tr>
-          <tr><td>Риск EPC-подрядчика</td><td><span class="badge badge-mid">Средняя</span></td><td><span class="badge badge-high">Высокое</span></td><td>Банк. гарантии; авансы ≤20%</td></tr>
-          <tr><td>Изменение налогового зак-ва</td><td><span class="badge badge-low">Низкая</span></td><td><span class="badge badge-mid">Среднее</span></td><td>Мониторинг; налоговый советник</td></tr>
-          <tr><td>Отказ в финансировании МФИ</td><td><span class="badge badge-low">Низкая</span></td><td><span class="badge badge-crit">Критическое</span></td><td>Параллельные переговоры ЕБРР/АБР</td></tr>
-          <tr><td>Природные явления (пыльные бури)</td><td><span class="badge badge-mid">Средняя</span></td><td><span class="badge badge-low">Низкое</span></td><td>Регулярная очистка; страхование</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Критерии успеха (KPI)</h3>
-      <table class="data-table">
-        <thead><tr><th>KPI</th><th>Целевое значение</th><th>Метод измерения</th></tr></thead>
-        <tbody>
-          <tr><td>Прямой срок окупаемости</td><td>≤ 10 лет</td><td>Финансовая модель</td></tr>
-          <tr><td>IRR проекта</td><td>&gt; 20%</td><td>Финансовая модель</td></tr>
-          <tr><td>DSCR</td><td>≥ 1,3x</td><td>Ежегодная отчётность</td></tr>
-          <tr><td>КИУМ</td><td>≥ 19%</td><td>SCADA-мониторинг</td></tr>
-          <tr><td>Дата COD</td><td>≤ 26 мес. от FC</td><td>График реализации</td></tr>
-          <tr><td>Доступность станции</td><td>≥ 98%</td><td>Отчёты O&amp;M</td></tr>
-          <tr><td>Выработка год 1</td><td>≥ 88 000 МВт·ч</td><td>Коммерческий счётчик</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="card">
-      <h3>Допущения и ограничения</h3>
-      <div class="grid-2">
-        <div>
-          <h4 class="ok">Допущения</h4>
-          <ul class="check-list">
-            <li>Курс USD/KZT — 492 ₸ для CAPEX</li>
-            <li>Тариф PPA 34 ₸/кВт·ч, индексация 5%/год</li>
-            <li>КИУМ 21% подтверждён данными инсоляции</li>
-            <li>EPC «под ключ» за $470 тыс./МВт</li>
-            <li>Деградация панелей — 0,5%/год линейно</li>
-            <li>КПН — 20% по НК РК</li>
-            <li>Лизинг 12,5%/год; кредит МФИ 8,5%/год</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="bad">Ограничения</h4>
-          <ul class="cross-list">
-            <li>Не учтён carbon tax / изменение поддержки ВИЭ</li>
-            <li>Не включена BESS</li>
-            <li>Расчёты без НДС и косвенных налогов</li>
-            <li>КИУМ подлежит уточнению по Solar Resource Assessment</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STAKEHOLDERS -->
-  <section class="tab-panel" id="stakeholders">
-    <div class="card">
-      <h3>Заинтересованные стороны</h3>
-      <div class="stakeholder-grid">
-        <div class="stakeholder-card"><h4>SPV (Проектная компания)</h4><p class="muted">Застройщик и владелец</p><p>Доходность, окупаемость</p></div>
-        <div class="stakeholder-card"><h4>ЕБРР</h4><p class="muted">Ведущий кредитор</p><p>Возвратность кредита, ESG</p></div>
-        <div class="stakeholder-card"><h4>АБР</h4><p class="muted">Со-кредитор</p><p>Возвратность, устойчивое развитие</p></div>
-        <div class="stakeholder-card"><h4>БРК-Лизинг</h4><p class="muted">Лизингодатель</p><p>Погашение лизинга</p></div>
-        <div class="stakeholder-card"><h4>Минэнерго РК</h4><p class="muted">Регулятор</p><p>Выполнение целей ВИЭ</p></div>
-        <div class="stakeholder-card"><h4>KOREM / Покупатель</h4><p class="muted">Офтейкер (PPA)</p><p>Надёжность поставок</p></div>
-        <div class="stakeholder-card"><h4>EPC-подрядчик (Китай)</h4><p class="muted">Строитель</p><p>Выполнение контракта</p></div>
-        <div class="stakeholder-card"><h4>O&amp;M-подрядчик</h4><p class="muted">Эксплуатация</p><p>Долгосрочный контракт</p></div>
-        <div class="stakeholder-card"><h4>Местные власти</h4><p class="muted">Разрешительный орган</p><p>Социальные выгоды, налоги</p></div>
-      </div>
-    </div>
-  </section>
+  </div>
 
 </main>
 
@@ -452,6 +122,5 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
 </body>
 </html>
