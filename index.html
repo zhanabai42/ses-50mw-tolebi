@@ -3,124 +3,398 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Обзор — СЭС 50 МВт «Толеби»</title>
-<meta name="description" content="Инвестиционный дашборд проекта строительства солнечной электростанции 50 МВт в Толеби районе, Туркестанская область, Казахстан">
-<link rel="stylesheet" href="css/style.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<title>НАК «Казатомпром» — Система обработки бюджетных заявок (ЭДО)</title>
+<style>
+  :root {
+    --bg: #0d1117; --panel: #161b22; --panel-2: #1c2330; --border: #2a3441;
+    --text: #e6edf3; --muted: #8b97a6; --accent: #2ea3f2; --accent-2: #1a7fc4;
+    --green: #3fb950; --amber: #d29922; --red: #f85149; --grey: #6e7681;
+    --kap: #00a3e0; --kap-dark: #003a5d;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, "Segoe UI", Roboto, sans-serif; padding: 0 24px 40px;
+  }
+  header {
+    display: flex; align-items: center; gap: 14px; padding: 18px 0; margin-bottom: 20px;
+    border-bottom: 2px solid var(--kap);
+  }
+  .logo {
+    width: 44px; height: 44px; border-radius: 8px; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--kap), var(--kap-dark));
+    display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: #fff;
+  }
+  h1 { font-size: 19px; margin: 0; }
+  h2 { font-size: 14px; margin: 0 0 12px; color: var(--accent); text-transform: uppercase; letter-spacing: .5px; }
+  .sub { color: var(--muted); margin: 2px 0 0; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 380px 1fr; gap: 20px; align-items: start; }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 10px; padding: 18px; margin-bottom: 20px; }
+  label { display: block; font-size: 12px; color: var(--muted); margin: 10px 0 4px; }
+  input, textarea, select {
+    width: 100%; background: var(--panel-2); border: 1px solid var(--border); color: var(--text);
+    border-radius: 6px; padding: 8px 10px; font: inherit;
+  }
+  textarea { resize: vertical; min-height: 48px; font-family: ui-monospace, "Cascadia Code", monospace; font-size: 12px; }
+  button {
+    background: var(--accent-2); color: #fff; border: 0; border-radius: 6px;
+    padding: 9px 14px; font: inherit; font-weight: 600; cursor: pointer; margin-top: 12px;
+  }
+  button:hover { background: var(--accent); }
+  button.ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+  button.ghost:hover { color: var(--text); border-color: var(--accent); }
+  .ledger { display: flex; gap: 12px; flex-wrap: wrap; }
+  .stat { background: var(--panel-2); border-radius: 8px; padding: 12px 16px; flex: 1; min-width: 110px; }
+  .stat .v { font-size: 17px; font-weight: 700; }
+  .stat .l { font-size: 10px; color: var(--muted); text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-size: 11px; text-transform: uppercase; font-weight: 600; }
+  tr:last-child td { border-bottom: 0; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .b-ranked, .b-under_review { background: rgba(63,185,80,.15); color: var(--green); }
+  .b-deferred_no_income { background: rgba(210,153,34,.15); color: var(--amber); }
+  .b-rejected_no_line { background: rgba(248,81,73,.15); color: var(--red); }
+  .b-submitted { background: rgba(110,118,129,.2); color: var(--grey); }
+  .rank-cell { font-weight: 700; color: var(--accent); }
+  .margin-pos { color: var(--green); }
+  .margin-neg { color: var(--red); }
+  .margin-null { color: var(--muted); font-style: italic; }
+  .muted { color: var(--muted); font-size: 12px; }
+  .reason { color: var(--amber); font-size: 11px; }
+  .empty { color: var(--muted); padding: 20px; text-align: center; }
+  .div-tag { font-size: 10px; color: var(--kap); text-transform: uppercase; letter-spacing: .3px; }
+  .org { font-size: 12px; }
+  .org .o-officer { font-weight: 700; color: var(--text); margin-top: 10px; }
+  .org .o-dept { color: var(--muted); padding-left: 14px; }
+  .org .o-dept::before { content: "└ "; color: var(--border); }
+  details summary { cursor: pointer; color: var(--accent); font-size: 13px; font-weight: 600; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+</style>
 </head>
 <body>
-
-<header class="topbar">
-  <div class="container topbar__inner">
-    <div class="brand">
-      <span class="brand__dot"></span>
-      <div>
-        <div class="brand__title">СЭС 50 МВт «Толеби»</div>
-        <div class="brand__subtitle">Инвестиционный проект · Туркестанская область, РК</div>
-      </div>
-    </div>
-    <span class="status-pill">Pre-development · v1.0</span>
+<header>
+  <div class="logo">KAP</div>
+  <div>
+    <h1>НАК «Казатомпром» — Система обработки бюджетных заявок (ЭДО)</h1>
+    <p class="sub">PRD v1.0 · БДР по структуре Правления · мягкий резерв · ранжирование по марже</p>
   </div>
 </header>
 
-<nav class="tabs">
-  <div class="container tabs__inner">
-    <a class="tab-btn active" href="index.html">Обзор</a>
-    <a class="tab-btn" href="finance.html">Финансы</a>
-    <a class="tab-btn" href="production.html">Производство</a>
-    <a class="tab-btn" href="funding.html">Финансирование</a>
-    <a class="tab-btn" href="roadmap.html">Дорожная карта</a>
-    <a class="tab-btn" href="risks.html">Риски</a>
-  </div>
-</nav>
-
-<main class="container">
-
-  <div class="kpi-grid">
-    <div class="kpi-card"><div class="kpi-label">Мощность</div><div class="kpi-value">50 <span>МВт</span></div></div>
-    <div class="kpi-card"><div class="kpi-label">CAPEX</div><div class="kpi-value">$23,5 <span>млн</span></div></div>
-    <div class="kpi-card"><div class="kpi-label">Тариф PPA</div><div class="kpi-value">34 <span>₸/кВт·ч</span></div></div>
-    <div class="kpi-card"><div class="kpi-label">КИУМ</div><div class="kpi-value">21 <span>%</span></div></div>
-    <div class="kpi-card highlight"><div class="kpi-label">Простой PP</div><div class="kpi-value">8,5 <span>лет</span></div></div>
-    <div class="kpi-card highlight"><div class="kpi-label">IRR проекта</div><div class="kpi-value">&gt;22 <span>%</span></div></div>
-    <div class="kpi-card highlight"><div class="kpi-label">NPV (12%, 25 лет)</div><div class="kpi-value">&gt;12 <span>млрд ₸</span></div></div>
-    <div class="kpi-card"><div class="kpi-label">Срок службы</div><div class="kpi-value">25 <span>лет</span></div></div>
-  </div>
-
-  <div class="grid-2">
-    <div class="card">
-      <h3>Описание проекта</h3>
-      <p>Строительство и эксплуатация солнечной фотоэлектрической электростанции установленной мощностью <b>50 МВт</b> в Толеби районе Туркестанской области Республики Казахстан.</p>
-      <p>Проект реализуется в рамках государственной политики перехода к зелёной экономике. Электроэнергия реализуется по долгосрочному договору <b>PPA</b> с фиксированным тарифом 34 ₸/кВт·ч, индексируемым на 5% в год.</p>
-      <p>Толеби район обладает одним из самых высоких показателей солнечной инсоляции в Казахстане (&gt;2700 ч/год), что обеспечивает КИУМ 21% — выше среднего по стране уровня 15–17%.</p>
+<div class="grid">
+  <!-- LEFT: controls -->
+  <div>
+    <div class="panel">
+      <h2>Бюджет (БДР)</h2>
+      <label>CSV: budget_line_id, name, type, planned_amount, division</label>
+      <textarea id="budgetCsv" rows="11">budget_line_id,name,type,planned_amount,division
+INC-U3O8,Реализация урана (ТД KazakAtom),income,4200000000,Коммерческий блок
+INC-RM,Реализация редких металлов (Ульба),income,180000000,ЯТЦ и атомная энергия
+INC-NFC,ЯТЦ и сопутствующие услуги,income,320000000,ЯТЦ и атомная энергия
+INC-OTH,Прочие поступления,income,90000000,Финансовый блок
+EXP-MINE,Горный департамент,expense,950000000,Производственный блок
+EXP-PROD,Производственный департамент,expense,640000000,Производственный блок
+EXP-TRM,Техрегулирование и метрология,expense,85000000,Производственный блок
+EXP-GEO,Геологоразведка (Волковгеология),expense,210000000,Производственный блок
+EXP-RM,Редкие и редкоземельные металлы,expense,160000000,ЯТЦ и атомная энергия
+EXP-ULBA,Ульбинский металлургический завод,expense,140000000,ЯТЦ и атомная энергия
+EXP-SALES,Сбыт и трейдинг (ТД KazakAtom),expense,120000000,Коммерческий блок
+EXP-MKT,Маркетинг и развитие рынка,expense,75000000,Коммерческий блок
+EXP-IT,Цифровизация и ИТ,expense,180000000,HR и цифровизация
+EXP-HR,Управление персоналом,expense,95000000,HR и цифровизация
+EXP-LEGAL,Юридическое сопровождение и риски,expense,60000000,Юр. поддержка и риски
+EXP-AUDIT,Служба внутреннего аудита,expense,40000000,Корпоративное управление
+EXP-COMPL,Комплаенс,expense,30000000,Корпоративное управление</textarea>
+      <button id="loadBtn">Загрузить бюджет (заморозить)</button>
+      <div id="budgetInfo" class="muted" style="margin-top:10px;"></div>
     </div>
-    <div class="card">
-      <h3>Цели проекта</h3>
-      <h4>Первичные</h4>
-      <ul class="check-list">
-        <li>Построить и ввести в эксплуатацию СЭС 50 МВт</li>
-        <li>Достичь PP ≤ 10 лет (цель — 8,5 лет)</li>
-        <li>IRR &gt; 12% (целевой &gt;22%)</li>
-        <li>Финансирование 80% кредит / 20% лизинг</li>
-      </ul>
-      <h4>Вторичные</h4>
-      <ul class="check-list">
-        <li>Сократить выброс CO₂ на ≈75 000 т/год</li>
-        <li>Локализация строительства согласно требованиям БРК</li>
-        <li>База для масштабирования портфеля ВИЭ-активов</li>
-      </ul>
+
+    <div class="panel">
+      <h2>Новая заявка</h2>
+      <label>Инициатор (подразделение) *</label>
+      <input id="applicant" value="Горный департамент">
+      <label>Строка расхода (budget_line_id) *</label>
+      <select id="budgetLineId"></select>
+      <label>Назначение *</label>
+      <input id="purpose" value="Модернизация участка ПСВ">
+      <label>Сумма расхода, ₸ * (&gt; 0)</label>
+      <input id="expenseAmount" type="number" value="300000000">
+      <label>Планируемый доход, ₸ (0 — недоходный)</label>
+      <input id="expectedIncome" type="number" value="500000000">
+      <label>Комментарий</label>
+      <input id="comment" value="">
+      <button id="submitBtn">Подать заявку</button>
+      <button id="seedBtn" class="ghost">Демо: 5 заявок</button>
+      <button id="resetBtn" class="ghost">Сброс</button>
+    </div>
+
+    <div class="panel">
+      <details>
+        <summary>Структура Правления НАК «Казатомпром»</summary>
+        <div class="org" id="orgChart"></div>
+        <p class="muted" style="margin-top:10px;">Источник: официальный сайт kazatomprom.kz (корпоративное управление, состав Правления).</p>
+      </details>
     </div>
   </div>
 
-  <div class="card">
-    <h3>Объём работ</h3>
-    <div class="grid-2">
-      <div>
-        <h4 class="ok">В рамках проекта</h4>
-        <ul class="check-list">
-          <li>FEED + детальный проект СЭС 50 МВт</li>
-          <li>EPC-контракт с китайским генподрядчиком (под ключ)</li>
-          <li>Строительство, монтаж, пуско-наладка</li>
-          <li>Электросетевое присоединение</li>
-          <li>PPA с KOREM / промышленным потребителем</li>
-          <li>Проектное финансирование (ЕБРР + АБР + БРК-Лизинг)</li>
-          <li>Эксплуатация 25 лет (O&amp;M)</li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="bad">Вне рамок проекта</h4>
-        <ul class="cross-list">
-          <li>Линии передачи за пределами точки подключения</li>
-          <li>Системы накопления энергии (BESS) — следующая фаза</li>
-          <li>Производство солнечных модулей</li>
-        </ul>
+  <!-- RIGHT: state -->
+  <div>
+    <div class="panel">
+      <h2>Леджер (общий пул дохода)</h2>
+      <div class="ledger">
+        <div class="stat"><div class="v" id="lgTotal">—</div><div class="l">Доход (план), ₸</div></div>
+        <div class="stat"><div class="v" id="lgReserved">—</div><div class="l">Зарезервировано, ₸</div></div>
+        <div class="stat"><div class="v" id="lgAvail">—</div><div class="l">Доступно, ₸</div></div>
       </div>
     </div>
-  </div>
 
-  <div class="card">
-    <h3>Заинтересованные стороны</h3>
-    <div class="stakeholder-grid">
-      <div class="stakeholder-card"><h4>SPV (Проектная компания)</h4><p class="muted">Застройщик и владелец</p><p>Доходность, окупаемость</p></div>
-      <div class="stakeholder-card"><h4>ЕБРР</h4><p class="muted">Ведущий кредитор</p><p>Возвратность кредита, ESG</p></div>
-      <div class="stakeholder-card"><h4>АБР</h4><p class="muted">Со-кредитор</p><p>Возвратность, устойчивое развитие</p></div>
-      <div class="stakeholder-card"><h4>БРК-Лизинг</h4><p class="muted">Лизингодатель</p><p>Погашение лизинга</p></div>
-      <div class="stakeholder-card"><h4>Минэнерго РК</h4><p class="muted">Регулятор</p><p>Выполнение целей ВИЭ</p></div>
-      <div class="stakeholder-card"><h4>KOREM / Покупатель</h4><p class="muted">Офтейкер (PPA)</p><p>Надёжность поставок</p></div>
-      <div class="stakeholder-card"><h4>EPC-подрядчик (Китай)</h4><p class="muted">Строитель</p><p>Выполнение контракта</p></div>
-      <div class="stakeholder-card"><h4>O&amp;M-подрядчик</h4><p class="muted">Эксплуатация</p><p>Долгосрочный контракт</p></div>
-      <div class="stakeholder-card"><h4>Местные власти</h4><p class="muted">Разрешительный орган</p><p>Социальные выгоды, налоги</p></div>
+    <div class="panel">
+      <h2>Заявки (по статусу)</h2>
+      <table>
+        <thead><tr><th>ID</th><th>Инициатор</th><th>Строка / блок</th><th>Расход, ₸</th><th>Маржа</th><th>Статус</th></tr></thead>
+        <tbody id="appsBody"><tr><td colspan="6" class="empty">Нет заявок</td></tr></tbody>
+      </table>
+    </div>
+
+    <div class="panel">
+      <h2>Ранжированная очередь на финансирование</h2>
+      <table>
+        <thead><tr><th>Ранг</th><th>Инициатор</th><th>Назначение</th><th>Блок</th><th>Маржа</th></tr></thead>
+        <tbody id="rankBody"><tr><td colspan="5" class="empty">Нажмите «Ранжировать»</td></tr></tbody>
+      </table>
+      <button id="rankBtn">Ранжировать under_review</button>
     </div>
   </div>
+</div>
 
-</main>
+<script>
+// ─── CORE LOGIC (ported from src/, browser-compatible) ─────────────────────
+const VALID_TYPES = new Set(['income', 'expense']);
+const STATUS = { SUBMITTED:'submitted', REJECTED_NO_LINE:'rejected_no_line',
+  DEFERRED_NO_INCOME:'deferred_no_income', UNDER_REVIEW:'under_review', RANKED:'ranked' };
+const REJECTION = {
+  NO_LINE:   { code:'NO_LINE',   reason:'Строка расхода отсутствует в утверждённом бюджете' },
+  NO_INCOME: { code:'NO_INCOME', reason:'Доступного дохода недостаточно для финансирования расхода' },
+};
+let _version = 0, _idCounter = 0;
 
-<footer class="footer">
-  <div class="container">
-    Документ подготовлен на основе финансовой модели СЭС 50 МВт (Туркестанская область, Толеби район). Все финансовые показатели расчётные и подлежат верификации в рамках Due Diligence.
-  </div>
-</footer>
+function parseCSV(csv) {
+  const lines = csv.trim().split(/\r?\n/);
+  const headers = lines[0].split(',').map(h => h.trim());
+  return lines.slice(1).map(line => {
+    const vals = line.split(',').map(v => v.trim());
+    const row = {}; headers.forEach((h,i) => row[h] = vals[i]); return row;
+  });
+}
 
+function loadBudget(source) {
+  const rows = typeof source === 'string' ? parseCSV(source) : source;
+  const lines = {}, errors = [];
+  rows.forEach((row,i) => {
+    const { budget_line_id, name, type, planned_amount, division } = row;
+    if (!budget_line_id) return errors.push(`Строка ${i+1}: нет budget_line_id`);
+    if (!name) return errors.push(`Строка ${i+1}: нет name`);
+    if (!VALID_TYPES.has(type)) return errors.push(`Строка ${i+1}: неверный type "${type}"`);
+    const amount = Number(planned_amount);
+    if (!Number.isFinite(amount) || amount < 0) return errors.push(`Строка ${i+1}: planned_amount должен быть ≥ 0`);
+    if (lines[budget_line_id]) return errors.push(`Дубликат budget_line_id "${budget_line_id}"`);
+    lines[budget_line_id] = Object.freeze({ budget_line_id, name, type, planned_amount: amount, division: division || '—' });
+  });
+  if (errors.length) throw new Error('Ошибка валидации бюджета:\n' + errors.join('\n'));
+  const all = Object.values(lines);
+  const total_income = all.filter(l=>l.type==='income').reduce((s,l)=>s+l.planned_amount,0);
+  const total_expense_planned = all.filter(l=>l.type==='expense').reduce((s,l)=>s+l.planned_amount,0);
+  return Object.freeze({ version:++_version, loaded_at:new Date().toISOString(),
+    lines:Object.freeze(lines), total_income, total_expense_planned });
+}
+
+function findExpenseLine(budget, id) {
+  const line = budget.lines[id];
+  return line && line.type === 'expense' ? line : null;
+}
+
+class Ledger {
+  constructor(totalIncome) {
+    if (!Number.isFinite(totalIncome) || totalIncome < 0) throw new Error('totalIncome ≥ 0 required');
+    this._total = totalIncome; this._reserved = 0;
+  }
+  availableIncome() { return this._total - this._reserved; }
+  reserve(a) { if (a<=0) throw new Error('reserve>0'); if (a>this.availableIncome()) throw new Error('insufficient'); this._reserved+=a; }
+  release(a) { if (a<=0) throw new Error('release>0'); this._reserved=Math.max(0,this._reserved-a); }
+  get totalIncome(){return this._total;} get reserved(){return this._reserved;}
+}
+
+function createApplication(f) {
+  const { applicant, budget_line_id, purpose, expense_amount, expected_income, comment } = f;
+  if (!applicant) throw new Error('applicant обязателен');
+  if (!budget_line_id) throw new Error('budget_line_id обязателен');
+  if (!purpose) throw new Error('purpose обязателен');
+  if (!Number.isFinite(expense_amount) || expense_amount <= 0) throw new Error('expense_amount должен быть > 0');
+  if (!Number.isFinite(expected_income) || expected_income < 0) throw new Error('expected_income должен быть ≥ 0');
+  const now = new Date().toISOString();
+  return { id:`APP-${String(++_idCounter).padStart(5,'0')}`, applicant, budget_line_id, purpose,
+    expense_amount, expected_income, comment:comment||'', submitted_at:now, status:STATUS.SUBMITTED,
+    margin:undefined, division:undefined, status_history:[{status:STATUS.SUBMITTED, at:now}] };
+}
+
+function processApplication(app, budget, ledger) {
+  const now = new Date().toISOString();
+  const transition = (status, extra={}) => { app.status=status; app.status_history.push({status,at:now,...extra}); };
+  const line = findExpenseLine(budget, app.budget_line_id);
+  if (!line) { app.rejection_code=REJECTION.NO_LINE.code; app.rejection_reason=REJECTION.NO_LINE.reason;
+    transition(STATUS.REJECTED_NO_LINE,{reason:REJECTION.NO_LINE.reason}); return app; }
+  app.division = line.division;
+  if (ledger.availableIncome() < app.expense_amount) {
+    app.rejection_code=REJECTION.NO_INCOME.code; app.rejection_reason=REJECTION.NO_INCOME.reason;
+    transition(STATUS.DEFERRED_NO_INCOME,{reason:REJECTION.NO_INCOME.reason}); return app; }
+  ledger.reserve(app.expense_amount); transition(STATUS.UNDER_REVIEW);
+  app.margin = app.expected_income === 0 ? null : ((app.expected_income - app.expense_amount)/app.expected_income)*100;
+  return app;
+}
+
+function rank(applications) {
+  const review = applications.filter(a => a.status === STATUS.UNDER_REVIEW);
+  const now = new Date().toISOString();
+  review.sort((a,b) => {
+    const am = a.margin!==null&&a.margin!==undefined, bm = b.margin!==null&&b.margin!==undefined;
+    if (am!==bm) return am?-1:1;
+    if (am&&bm&&a.margin!==b.margin) return b.margin-a.margin;
+    return a.submitted_at < b.submitted_at ? -1 : 1;
+  });
+  review.forEach((app,i) => { app.rank=i+1; app.status=STATUS.RANKED;
+    app.status_history.push({status:STATUS.RANKED, at:now, reason:`Rank ${i+1}`}); });
+  return review;
+}
+
+// ─── ORG CHART (official Management Board structure) ────────────────────────
+const ORG = [
+  { officer:'Председатель Правления (CEO)', depts:['Секретариат руководства'] },
+  { officer:'Главный директор по производству (CPO)', depts:['Горный департамент','Производственный департамент','Техрегулирование и метрология','Геологоразведка (Волковгеология)'] },
+  { officer:'Главный директор по ЯТЦ и атомной энергии', depts:['Редкие и редкоземельные металлы','Ульбинский металлургический завод'] },
+  { officer:'Главный коммерческий директор (CCO)', depts:['Сбыт и трейдинг (ТД KazakAtom AG)','Маркетинг и развитие рынка'] },
+  { officer:'Главный директор по экономике и финансам (CFO)', depts:['Финансы и экономика','Казначейство'] },
+  { officer:'Главный директор по персоналу и цифровизации', depts:['Управление персоналом','Цифровизация и ИТ'] },
+  { officer:'Управляющий директор по юр. поддержке и рискам', depts:['Юридическое сопровождение','Управление рисками'] },
+  { officer:'Корпоративное управление', depts:['Служба внутреннего аудита','Комплаенс','Корпоративный секретарь'] },
+];
+
+// ─── UI STATE ──────────────────────────────────────────────────────────────
+let budget = null, ledger = null, apps = [];
+const $ = id => document.getElementById(id);
+const fmt = n => n.toLocaleString('ru-RU');
+
+function renderOrg() {
+  $('orgChart').innerHTML = ORG.map(o =>
+    `<div class="o-officer">${o.officer}</div>` +
+    o.depts.map(d => `<div class="o-dept">${d}</div>`).join('')
+  ).join('');
+}
+
+function refreshLineDropdown() {
+  const sel = $('budgetLineId'); sel.innerHTML = '';
+  if (!budget) { sel.innerHTML = '<option value="">— загрузите бюджет —</option>'; return; }
+  // group expense lines by division using optgroups
+  const expenses = Object.values(budget.lines).filter(l => l.type === 'expense');
+  const byDiv = {};
+  expenses.forEach(l => { (byDiv[l.division] = byDiv[l.division] || []).push(l); });
+  Object.keys(byDiv).forEach(div => {
+    const og = document.createElement('optgroup'); og.label = div;
+    byDiv[div].forEach(l => {
+      const o = document.createElement('option'); o.value = l.budget_line_id;
+      o.textContent = `${l.budget_line_id} — ${l.name}`; og.appendChild(o);
+    });
+    sel.appendChild(og);
+  });
+  const ogTest = document.createElement('optgroup'); ogTest.label = '— тест —';
+  const o = document.createElement('option'); o.value = 'EXP-999';
+  o.textContent = 'EXP-999 — несуществующая строка'; ogTest.appendChild(o);
+  sel.appendChild(ogTest);
+}
+
+function renderLedger() {
+  if (!ledger) { $('lgTotal').textContent=$('lgReserved').textContent=$('lgAvail').textContent='—'; return; }
+  $('lgTotal').textContent = fmt(ledger.totalIncome);
+  $('lgReserved').textContent = fmt(ledger.reserved);
+  $('lgAvail').textContent = fmt(ledger.availableIncome());
+}
+
+function marginCell(m) {
+  if (m === null) return '<span class="margin-null">недоходный</span>';
+  if (m === undefined) return '<span class="muted">—</span>';
+  return `<span class="${m>=0?'margin-pos':'margin-neg'}">${m.toFixed(1)}%</span>`;
+}
+
+function renderApps() {
+  const b = $('appsBody');
+  if (!apps.length) { b.innerHTML = '<tr><td colspan="6" class="empty">Нет заявок</td></tr>'; return; }
+  b.innerHTML = apps.map(a => `
+    <tr>
+      <td>${a.id}</td><td>${a.applicant}</td>
+      <td>${a.budget_line_id}${a.division?`<div class="div-tag">${a.division}</div>`:''}</td>
+      <td>${fmt(a.expense_amount)}</td><td>${marginCell(a.margin)}</td>
+      <td><span class="badge b-${a.status}">${a.status}</span>
+        ${a.rejection_reason?`<div class="reason">${a.rejection_reason}</div>`:''}</td>
+    </tr>`).join('');
+}
+
+function renderRank(ranked) {
+  const b = $('rankBody');
+  if (!ranked || !ranked.length) { b.innerHTML = '<tr><td colspan="5" class="empty">Нет заявок в статусе under_review</td></tr>'; return; }
+  b.innerHTML = ranked.map(a => `
+    <tr><td class="rank-cell">#${a.rank}</td><td>${a.applicant}</td>
+      <td>${a.purpose}</td><td class="div-tag">${a.division||'—'}</td><td>${marginCell(a.margin)}</td></tr>`).join('');
+}
+
+// ─── HANDLERS ──────────────────────────────────────────────────────────────
+$('loadBtn').onclick = () => {
+  try {
+    budget = loadBudget($('budgetCsv').value);
+    ledger = new Ledger(budget.total_income);
+    apps = [];
+    $('budgetInfo').innerHTML = `✓ v${budget.version} · доход ${fmt(budget.total_income)} ₸ · расход (план) ${fmt(budget.total_expense_planned)} ₸ · строк: ${Object.keys(budget.lines).length}`;
+    $('budgetInfo').style.color = 'var(--green)';
+    refreshLineDropdown(); renderLedger(); renderApps(); renderRank([]);
+  } catch (e) {
+    $('budgetInfo').innerHTML = e.message.replace(/\n/g,'<br>'); $('budgetInfo').style.color = 'var(--red)';
+  }
+};
+
+$('submitBtn').onclick = () => {
+  if (!budget) { alert('Сначала загрузите бюджет'); return; }
+  try {
+    const app = createApplication({
+      applicant: $('applicant').value, budget_line_id: $('budgetLineId').value,
+      purpose: $('purpose').value, expense_amount: Number($('expenseAmount').value),
+      expected_income: Number($('expectedIncome').value), comment: $('comment').value,
+    });
+    processApplication(app, budget, ledger);
+    apps.push(app); renderApps(); renderLedger(); renderRank([]);
+  } catch (e) { alert(e.message); }
+};
+
+$('seedBtn').onclick = () => {
+  if (!budget) $('loadBtn').click();
+  const seed = [
+    { applicant:'Горный департамент', budget_line_id:'EXP-MINE', purpose:'Расширение участка ПСВ', expense_amount:900000000, expected_income:1500000000 },
+    { applicant:'Сбыт и трейдинг', budget_line_id:'EXP-SALES', purpose:'Долгосрочный контракт на U3O8', expense_amount:100000000, expected_income:130000000 },
+    { applicant:'ИТ-блок', budget_line_id:'EXP-IT', purpose:'Внедрение ERP', expense_amount:170000000, expected_income:0 },
+    { applicant:'Ульбинский завод', budget_line_id:'EXP-ULBA', purpose:'Линия бериллия (низкая окупаемость)', expense_amount:140000000, expected_income:90000000 },
+    { applicant:'Подрядчик «Альфа»', budget_line_id:'EXP-999', purpose:'Внешние консультации', expense_amount:50000000, expected_income:80000000 },
+  ];
+  seed.forEach(f => { const a = createApplication(f); processApplication(a, budget, ledger); apps.push(a); });
+  renderApps(); renderLedger(); renderRank([]);
+};
+
+$('rankBtn').onclick = () => { if (!apps.length) return; renderRank(rank(apps)); renderApps(); };
+
+$('resetBtn').onclick = () => {
+  budget=null; ledger=null; apps=[]; _idCounter=0;
+  $('budgetInfo').textContent=''; refreshLineDropdown(); renderLedger(); renderApps(); renderRank([]);
+};
+
+// init
+renderOrg();
+refreshLineDropdown();
+</script>
 </body>
 </html>
